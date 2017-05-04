@@ -5,6 +5,7 @@
 	"main": "dist/index.js",
 	"author": "Joshua Lunsford",
 	"license": "Apache-2.0",
+	"repository": "git@github.com:JTLunsford/create-subject-with-filter.git",
 	"devDependencies": {
 		"babel-cli": "^6.24.1",
 		"babel-preset-es2015": "^6.24.1",
