@@ -21,5 +21,19 @@
   },
   "scripts": {
     "build": "babel src --out-dir dist"
-  }
+  },
+  "keywords": [
+    "rx",
+    "rxjs",
+    "observable",
+    "subject",
+    "subscription",
+    "subscriber",
+    "filter",
+    "where",
+    "next",
+    "onNext",
+    "subscribe",
+    "observer"
+  ]
 }
