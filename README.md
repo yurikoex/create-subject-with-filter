@@ -1,6 +1,6 @@
 # create-subject-with-filter
 
-mimicing rxjs Subject exposing filter only
+mimicing rxjs Subject exposing filter only. Attempts to create a small webpacked file using rxjs/Subject is currently too hard to '[patch](https://gist.github.com/ericelliott/827f9628a8e032645df991d9f1e2140f)' 
 
 # Install
 
