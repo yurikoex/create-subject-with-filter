@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`subject should error 1`] = `
+Array [
+  "test 1",
+]
+`;
+
+exports[`subject should error 2`] = `
+Array [
+  [Error: error 1],
+]
+`;
+
+exports[`subject should error 3`] = `
+Array [
+  "test 3",
+]
+`;
+
+exports[`subject should ignore double unsub 1`] = `
+Array [
+  "test 1",
+]
+`;
+
+exports[`subject should sub 1`] = `
+Array [
+  "test 1",
+]
+`;
+
+exports[`subject should sub 2`] = `
+Array [
+  "test 2",
+]
+`;
+
+exports[`subject should sub 3`] = `
+Array [
+  "test 3",
+]
+`;
+
+exports[`subject should unsub 1`] = `
+Array [
+  "test 1",
+]
+`;

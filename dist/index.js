@@ -6,19 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 var createSubject = exports.createSubject = function createSubject() {
 	var subscriptionsNext = [];
 	var subscriptionsError = [];
-	var subscribe = function subscribe(next, error) {
-		next ? subscriptionsNext.push(next) : void 0;
-		error ? subscriptionsError.push(error) : void 0;
-		return {
-			unsubscribe: function unsubscribe() {
-				next ? subscriptionsNext.splice(subscriptionsNext.indexOf(next), 1) : void 0;
-				error ? subscriptionsError.splice(subscriptionsError.indexOf(error), 1) : void 0;
-			}
-		};
-	};
 
 	var next = function next(msg) {
 		return subscriptionsNext.forEach(function (cb) {
+			return cb(msg);
+		});
+	};
+	var error = function error(msg) {
+		return subscriptionsError.forEach(function (cb) {
 			return cb(msg);
 		});
 	};
@@ -44,8 +39,20 @@ var createSubject = exports.createSubject = function createSubject() {
 		};
 	};
 
+	var subscribe = function subscribe(next, error) {
+		next ? subscriptionsNext.push(next) : void 0;
+		error ? subscriptionsError.push(error) : void 0;
+		return {
+			unsubscribe: function unsubscribe() {
+				next ? subscriptionsNext.splice(subscriptionsNext.indexOf(next), 1) : void 0;
+				error ? subscriptionsError.splice(subscriptionsError.indexOf(error), 1) : void 0;
+			}
+		};
+	};
+
 	return {
 		next: next,
+		error: error,
 		subscribe: subscribe,
 		filter: filter
 	};
