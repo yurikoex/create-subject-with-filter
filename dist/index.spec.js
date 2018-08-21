@@ -94,4 +94,37 @@ describe('subject', function () {
 		subject.error(new Error('error 1'));
 		subject.next('test 3');
 	});
+
+	it('should not remove a subscription no matter how many times another subscriber unsubscribes', function (done) {
+		var subject = createSubject();
+		var sub1Count = 0,
+		    sub2Count = 0;
+		var check1 = 'should go only to sub 1',
+		    check2 = 'should go only to sub 2';
+
+		var _subject$subscribe4 = subject.subscribe(function (check) {
+			expect(check).toBe(check1);
+			sub1Count++;
+		}),
+		    unsub1 = _subject$subscribe4.unsubscribe;
+
+		subject.next(check1);
+
+		var _subject$subscribe5 = subject.subscribe(function (check) {
+			expect(check).toBe(check2);
+			sub2Count++;
+		}),
+		    unsub2 = _subject$subscribe5.unsubscribe;
+
+		unsub1();
+		unsub1();
+
+		subject.next(check2);
+
+		setImmediate(function () {
+			expect(sub1Count).toBe(1);
+			expect(sub2Count).toBe(1);
+			done();
+		});
+	});
 });
