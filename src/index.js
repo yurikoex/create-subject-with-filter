@@ -14,8 +14,10 @@ export const createSubject = () => {
 			error ? subscriptionsError.push(truthyError) : void 0
 			return {
 				unsubscribe: () => {
-					next ? subscriptionsNext.splice(subscriptionsNext.indexOf(truthyNext), 1) : void 0
-					error ? subscriptionsError.splice(subscriptionsError.indexOf(truthyError), 1) : void 0
+					const indexOfNext = subscriptionsNext.indexOf(truthyNext)
+					const indexOfError = subscriptionsError.indexOf(truthyError)
+					next && indexOfNext > -1 ? subscriptionsNext.splice(indexOfNext, 1) : void 0
+					next && indexOfError > -1 ? subscriptionsError.splice(indexOfError, 1) : void 0
 				}
 			}
 		}
@@ -26,8 +28,10 @@ export const createSubject = () => {
 		error ? subscriptionsError.push(error) : void 0
 		return {
 			unsubscribe: () => {
-				next ? subscriptionsNext.splice(subscriptionsNext.indexOf(next), 1) : void 0
-				error ? subscriptionsError.splice(subscriptionsError.indexOf(error), 1) : void 0
+				const indexOfNext = subscriptionsNext.indexOf(next)
+				const indexOfError = subscriptionsError.indexOf(error)
+				next && indexOfNext > -1 ? subscriptionsNext.splice(indexOfNext, 1) : void 0
+				next && indexOfError > -1 ? subscriptionsError.splice(indexOfError, 1) : void 0
 			}
 		}
 	}
